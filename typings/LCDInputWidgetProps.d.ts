@@ -7,20 +7,27 @@ import { CSSProperties } from "react";
 import { ActionValue, EditableValue } from "mendix";
 import { Big } from "big.js";
 
-export type BootstrapStyleEnum = "default" | "primary" | "success" | "info" | "inverse" | "warning" | "danger";
+export type OrientationEnum = "horizontal" | "vertical";
 
-export type LcdinputwidgetTypeEnum = "badge" | "label";
+export type InputTypeEnum = "text" | "number" | "date" | "email" | "password" | "tel";
 
 export interface LCDInputWidgetContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
+    orientation: OrientationEnum;
+    labelWidth: number;
+    inputType: InputTypeEnum;
     valueAttribute?: EditableValue<string | Big>;
     lcdinputwidgetValue: string;
-    bootstrapStyle: BootstrapStyleEnum;
-    lcdinputwidgetType: LcdinputwidgetTypeEnum;
-    onClickAction?: ActionValue;
+    prependEnabled: boolean;
+    prependValue: string;
+    appendEnabled: boolean;
+    appendValue: string;
+    onEnterAction?: ActionValue;
+    onChangeAction?: ActionValue;
+    onLeaveAction?: ActionValue;
 }
 
 export interface LCDInputWidgetPreviewProps {
@@ -32,9 +39,16 @@ export interface LCDInputWidgetPreviewProps {
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
+    orientation: OrientationEnum;
+    labelWidth: number | null;
+    inputType: InputTypeEnum;
     valueAttribute: string;
     lcdinputwidgetValue: string;
-    bootstrapStyle: BootstrapStyleEnum;
-    lcdinputwidgetType: LcdinputwidgetTypeEnum;
-    onClickAction: {} | null;
+    prependEnabled: boolean;
+    prependValue: string;
+    appendEnabled: boolean;
+    appendValue: string;
+    onEnterAction: {} | null;
+    onChangeAction: {} | null;
+    onLeaveAction: {} | null;
 }

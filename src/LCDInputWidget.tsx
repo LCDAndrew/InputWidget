@@ -1,27 +1,26 @@
-import { ReactElement, createElement, useCallback } from "react";
-
+import { ReactElement, createElement } from "react";
 import { LCDInputWidgetContainerProps } from "../typings/LCDInputWidgetProps";
-import { BadgeSample } from "./components/BadgeSample";
-import "./ui/LCDInputWidget.css";
+import "./ui/LCDInputWidget.scss";
+import classNames from "classnames";
 
 export function LCDInputWidget(props: LCDInputWidgetContainerProps): ReactElement {
-    const { lcdinputwidgetType, lcdinputwidgetValue, valueAttribute, onClickAction, style, bootstrapStyle } = props;
-    const onClickHandler = useCallback(() => {
-        if (onClickAction && onClickAction.canExecute) {
-            onClickAction.execute();
-        }
-    }, [onClickAction]);
+    const { orientation, labelWidth, inputType, prependEnabled, prependValue, appendEnabled, appendValue } = props;
+    const inputWidth = 12 - labelWidth;
 
     return (
-        <BadgeSample
-            type={lcdinputwidgetType}
-            bootstrapStyle={bootstrapStyle}
-            className={props.class}
-            clickable={!!onClickAction}
-            defaultValue={lcdinputwidgetValue ? lcdinputwidgetValue : ""}
-            onClickAction={onClickHandler}
-            style={style}
-            value={valueAttribute ? valueAttribute.displayValue : ""}
-        />
+        <div className="input-widget-wrapper">
+            <div className={classNames(`input-group-container ${orientation} form-group`)}>
+                <label className={classNames(`input-group__label control-label col-sm-${labelWidth}`)}>Label</label>
+                <div className={classNames(`input-container col-sm-${inputWidth}`)}>
+                    {prependEnabled && <div className="input-group-prepend">{prependValue}</div>}
+                    <input
+                        type={inputType}
+                        className={classNames("input-group__input form-control", {'input-group__input__prepend': prependEnabled,'input-group__input__append': appendEnabled})}
+                        value="value"
+                    />
+                    {appendEnabled && <div className="input-group-append">{appendValue}</div>}
+                </div>
+            </div>
+        </div>
     );
 }

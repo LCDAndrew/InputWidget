@@ -10,6 +10,30 @@
     </icon>
     <properties>
         <propertyGroup caption="General">
+            <property key="orientation" type="enumeration" required="true" defaultValue="horizontal">
+                <caption>Orientation</caption>
+                <description>Orientation of the label and input</description>
+                <enumerationValues>
+                    <enumerationValue key="horizontal">Horizontal</enumerationValue>
+                    <enumerationValue key="vertical">Vertical</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="labelWidth" type="integer" required="true" defaultValue="3">
+                <caption>Label width</caption>
+                <description>Choose a label width between 1 and 12</description>
+            </property>
+            <property key="inputType" type="enumeration" required="true" defaultValue="text">
+                <caption>Input type</caption>
+                <description>The type of input box</description>
+                <enumerationValues>
+                    <enumerationValue key="text">Text</enumerationValue>
+                    <enumerationValue key="number">Number</enumerationValue>
+                    <enumerationValue key="date">Date</enumerationValue>
+                    <enumerationValue key="email">Email</enumerationValue>
+                    <enumerationValue key="password">Password</enumerationValue>
+                    <enumerationValue key="tel">Telephone</enumerationValue>
+                </enumerationValues>
+            </property>
             <property key="valueAttribute" type="attribute" required="false">
                 <caption>Value attribute</caption>
                 <description>The attribute that contains the lcdinputwidget value</description>
@@ -27,32 +51,35 @@
             </property>
         </propertyGroup>
         <propertyGroup caption="Display">
-            <property key="bootstrapStyle" type="enumeration" defaultValue="default">
-                <caption>LCDInputWidget style</caption>
-                <description>The appearance of the lcdinputwidget</description>
-                <enumerationValues>
-                    <enumerationValue key="default">Default</enumerationValue>
-                    <enumerationValue key="primary">Primary</enumerationValue>
-                    <enumerationValue key="success">Success</enumerationValue>
-                    <enumerationValue key="info">Info</enumerationValue>
-                    <enumerationValue key="inverse">Inverse</enumerationValue>
-                    <enumerationValue key="warning">Warning</enumerationValue>
-                    <enumerationValue key="danger">Danger</enumerationValue>
-                </enumerationValues>
+            <property key="prependEnabled" type="boolean" defaultValue="true">
+                <caption>Enabling the prepend</caption>
+                <description>This option enables the prepend for the input</description>
             </property>
-            <property key="lcdinputwidgetType" type="enumeration" required="true" defaultValue="badge">
-                <caption>Type</caption>
-                <description>Render it as either a badge or a color label</description>
-                <enumerationValues>
-                    <enumerationValue key="badge">Badge</enumerationValue>
-                    <enumerationValue key="label">Label</enumerationValue>
-                </enumerationValues>
+            <property key="prependValue" type="string" required="false">
+                <caption>String for append</caption>
+                <description>This option uses this string as the value used in the prepend</description>
+            </property>
+            <property key="appendEnabled" type="boolean" defaultValue="true">
+                <caption>Enabling the append</caption>
+                <description>This option enables the append for the input</description>
+            </property>
+            <property key="appendValue" type="string" required="false">
+                <caption>String for append</caption>
+                <description>This option uses this string as the value used in the append</description>
             </property>
         </propertyGroup>
         <propertyGroup caption="Events">
-            <property key="onClickAction" type="action" required="false">
-                <caption>On click action</caption>
-                <description>Action to trigger when button / label is clicked</description>
+            <property key="onEnterAction" type="action" required="false">
+                <caption>On enter action</caption>
+                <description>Action to trigger when input is entered</description>
+            </property>
+            <property key="onChangeAction" type="action" required="false">
+                <caption>On change action</caption>
+                <description>Action to trigger when input is changed</description>
+            </property>
+            <property key="onLeaveAction" type="action" required="false">
+                <caption>On leave action</caption>
+                <description>Action to trigger when input is left</description>
             </property>
         </propertyGroup>
     </properties>
